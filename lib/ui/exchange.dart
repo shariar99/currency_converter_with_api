@@ -17,7 +17,7 @@ class _ExchangeState extends State<Exchange> {
   ApiService apiService = ApiService();
   String _selectedBaseCurrency = "USD";
   String _selectedTargetCurrency = "USD";
-  String _exchangeRate = "";
+  String _totalValue = "";
 
 
   final _textController = TextEditingController();
@@ -119,14 +119,32 @@ class _ExchangeState extends State<Exchange> {
           SizedBox(
             height: 15,
           ),
-          ElevatedButton(onPressed: (){}, child: Text("Exchange"),),
+          ElevatedButton(onPressed: ()async {
+            if(_textController.text.isNotEmpty){
+              await apiService.getExchange(_selectedBaseCurrency, _selectedTargetCurrency).then((result){
+
+                double value = double.parse(_textController.text);
+                double exchangeRate = double.parse(result[0].value.toString());
+                double total = value*exchangeRate;
+                _totalValue = total.toStringAsFixed(2).toString();
+                setState(() {
+
+                });
+
+              } );
+            }
+
+
+          }, child: Text("Exchange"),),
           SizedBox(
             height: 15,
           ),
-          Text(_exchangeRate,style: TextStyle(fontSize: 16,color: Colors.greenAccent),),
+          Text(_totalValue + " "+ _selectedTargetCurrency,style: TextStyle(fontSize: 60,color: Colors.greenAccent),),
 
         ],
       ),
     );
   }
 }
+
+
