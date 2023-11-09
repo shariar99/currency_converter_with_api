@@ -43,7 +43,8 @@ Before you begin, ensure you have met the following requirements:
 https://github.com/shariar99/currency_converter_with_api/assets/90522515/68a73283-9fff-4cc3-ad63-f1a90cd48bc0
 
 ## Folder Structure
-currency_converter/
+
+   currency_converter/
 │
 ├── lib/                  # Dart source code
 │   ├── model/            # Data models
@@ -60,6 +61,7 @@ currency_converter/
 ├── pubspec.yaml          # Flutter package dependencies
 │
 └── README.md             # Project documentation
+   
 ## Contributing
 
 If you would like to contribute to the project, please follow the guidelines and mention this repo also
